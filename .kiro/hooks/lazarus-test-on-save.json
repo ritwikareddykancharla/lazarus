@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run estimator tests on save",
+      "trigger": "PostFileSave",
+      "description": "Runs the Lazarus property-based tests once whenever a TypeScript file under src/ is saved.",
+      "matcher": "src/.*\\.(ts|tsx)$",
+      "action": {
+        "type": "command",
+        "command": "npx vitest run --reporter=dot",
+        "timeout": 180
+      }
+    }
+  ]
+}

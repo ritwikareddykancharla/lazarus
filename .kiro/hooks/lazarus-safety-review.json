@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Medical safety review",
+      "trigger": "PostToolUse",
+      "description": "After the agent edits a file, checks that safety framing, AHA targets and the drift-free estimator rules are intact.",
+      "matcher": "fs_write|str_replace|fs_append",
+      "action": {
+        "type": "agent",
+        "prompt": "If you just changed user-facing text in src/App.tsx, README.md or the coach in src/cpr.ts: the call-911/112 buttons and \"Training aid, not a medical device\" must stay on every screen, and nothing may claim Lazarus diagnoses, treats or is certified. If you changed RATE_MIN, RATE_MAX, DEPTH_MIN or DEPTH_MAX, cite the guideline that justifies it. If you changed estimate(), it must still avoid double integration, and every property in .kiro/specs/lazarus/design.md must still have a passing test with its original tolerance."
+      }
+    }
+  ]
+}
